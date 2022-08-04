@@ -55,5 +55,5 @@ http://web.archive.org/web/20191006061004/https://developer.mozilla.org/en-US/do
 Observer Notifications
 http://web.archive.org/web/20191006034558/https://developer.mozilla.org/en-US/docs/Mozilla/Tech/XPCOM/Observer_Notifications
 
-Stylesheet Service
+About Agent Sheet
 http://web.archive.org/web/20190930102512/https://developer.mozilla.org/en-US/docs/Archive/Add-ons/Using_the_Stylesheet_Service
