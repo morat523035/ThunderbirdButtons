@@ -1,5 +1,5 @@
-Thunderbird Autoconfig
-----------------------
+Thunderbird Buttons
+-------------------
 
 http://kb.mozillazine.org/Installation_directory
 http://kb.mozillazine.org/Profile_folder
@@ -27,7 +27,7 @@ note: "as" in *.as.css files stands for Agent Sheet
 
 * <profile directory>\chrome\attrsInspector.js
 
-The attrsInspector.js subscript is loaded by Attributes Inspector script.
+The attrsInspector.js subscript is loaded by the _AttributesInspectorThunderbirdButton.uc.js script.
 
 Thunderbird 32-bit:
 
@@ -49,8 +49,11 @@ Thunderbird Portable 64-bit:
 * C:\ThunderbirdPortable\App\Thunderbird64\defaults\pref\autoconfig.js
 * C:\ThunderbirdPortable\App\Thunderbird64\mozilla.cfg
 
-More info:
-
+Deploying Firefox in an enterprise environment
 http://web.archive.org/web/20191006061004/https://developer.mozilla.org/en-US/docs/Mozilla/Firefox/Enterprise_deployment_before_60
+
+Observer Notifications
 http://web.archive.org/web/20191006034558/https://developer.mozilla.org/en-US/docs/Mozilla/Tech/XPCOM/Observer_Notifications
+
+Stylesheet Service
 http://web.archive.org/web/20190930102512/https://developer.mozilla.org/en-US/docs/Archive/Add-ons/Using_the_Stylesheet_Service
