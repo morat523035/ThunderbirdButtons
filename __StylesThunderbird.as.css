@@ -1,0 +1,106 @@
+/* AGENT_SHEET */
+
+@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+@namespace html url("http://www.w3.org/1999/xhtml");
+
+scrollbar { width: 35px !important; }
+
+@-moz-document url-prefix("chrome://messenger/content/messenger.xhtml"),
+               url-prefix("chrome://messenger/content/messageWindow.xhtml"),
+               url-prefix("chrome://messenger/content/messengercompose/messengercompose.xhtml"),
+               url-prefix("chrome://messenger/content/addressbook/addressbook.xhtml") {
+
+  /* menu bar */
+
+  #menubar-items                                   { -moz-box-ordinal-group: 1 !important; }
+  #__unique_identifier_restart_button              { -moz-box-ordinal-group: 2 !important; }
+  #__unique_identifier_test_code_button            { -moz-box-ordinal-group: 3 !important; }
+  #__unique_identifier_attributes_inspector_button { -moz-box-ordinal-group: 4 !important; }
+  #__unique_identifier_get_command_button          { -moz-box-ordinal-group: 5 !important; }
+  #__unique_identifier_preference_tracker_button   { -moz-box-ordinal-group: 6 !important; }
+  #__unique_identifier_example_button              { -moz-box-ordinal-group: 7 !important; }
+  #mail-toolbar-menubar2 toolbarspring             { -moz-box-ordinal-group: 8 !important; }
+  #toolbar-menubar toolbarspring                   { -moz-box-ordinal-group: 8 !important; }
+  #compose-toolbar-menubar2 toolbarspring          { -moz-box-ordinal-group: 8 !important; }
+  #addrbook-toolbar-menubar2 toolbarspring         { -moz-box-ordinal-group: 8 !important; }
+  #mailviews-container                             { -moz-box-ordinal-group: 9 !important; }
+
+}
+
+/*
+
+// toolbar mode label="Icons and Text"    value="full"
+// toolbar mode label="Icons"             value="icons"
+// toolbar mode label="Text"              value="text"
+// toolbar mode label="Icons beside Text" value="textbesideicon"
+
+(function () {
+  var toolbar = document.getElementById("mail-toolbar-menubar2") ||
+                document.getElementById("toolbar-menubar");         // Menu Bar
+  toolbar.setAttribute("mode", "icons");
+  Services.xulStore.persist(toolbar, "mode");
+})();
+
+(function () {
+  var url = "chrome://messenger/content/messenger.xul";   // Thunderbird 68
+  var url = "chrome://messenger/content/messenger.xhtml"; // Thunderbird 78
+  var id = "mail-toolbar-menubar2";                       // Thunderbird 91
+  var id = "toolbar-menubar";                             // Thunderbird 102
+  var toolbar = document.getElementById(id);
+  var arr = [];
+  arr.push("1: " + Services.xulStore.getValue(url, id, "currentset"));
+  arr.push("2: " + toolbar.getAttribute("currentset"));
+  arr.push("3: " + toolbar.currentSet);
+  alert(arr.join("\n\n"));
+})();
+
+(function () {
+  var arr = [];
+  arr.push("menubar-items");
+  arr.push("__unique_identifier_restart_button");
+  arr.push("__unique_identifier_test_code_button");
+  arr.push("__unique_identifier_attributes_inspector_button");
+  arr.push("__unique_identifier_get_command_button");
+  arr.push("__unique_identifier_preference_tracker_button");
+  arr.push("__unique_identifier_example_button");
+  arr.push("spring");
+  arr.push("mailviews-container");
+  var toolbar = document.getElementById("mail-toolbar-menubar2") ||
+                document.getElementById("toolbar-menubar");         // Menu Bar
+  toolbar.currentSet = arr.join(",");
+  toolbar.setAttribute("currentset", arr.join(","));
+  Services.xulStore.persist(toolbar, "currentset");
+})();
+
+(function () {
+  var toolbar = document.getElementById("compose-toolbar-menubar2"); // Menu Bar
+  toolbar.setAttribute("mode", "icons");
+  Services.xulStore.persist(toolbar, "mode");
+})();
+
+(function () {
+  var url = "chrome://messenger/content/messengercompose/messengercompose.xul";   // Thunderbird 68
+  var url = "chrome://messenger/content/messengercompose/messengercompose.xhtml"; // Thunderbird 78
+  var id = "compose-toolbar-menubar2";
+  var toolbar = document.getElementById(id);
+  var arr = [];
+  arr.push("1: " + Services.xulStore.getValue(url, id, "currentset"));
+  arr.push("2: " + toolbar.getAttribute("currentset"));
+  arr.push("3: " + toolbar.currentSet);
+  alert(arr.join("\n\n"));
+})();
+
+(function () {
+  var arr = [];
+  arr.push("menubar-items");
+  arr.push("__unique_identifier_test_code_button");
+  arr.push("__unique_identifier_get_command_button");
+  arr.push("__unique_identifier_example_button");
+  arr.push("spring");
+  var toolbar = document.getElementById("compose-toolbar-menubar2"); // Menu Bar
+  toolbar.currentSet = arr.join(",");
+  toolbar.setAttribute("currentset", arr.join(","));
+  Services.xulStore.persist(toolbar, "currentset");
+})();
+
+*/
