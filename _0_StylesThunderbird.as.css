@@ -1,0 +1,112 @@
+/* AGENT_SHEET */
+
+@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+@namespace html url("http://www.w3.org/1999/xhtml");
+
+/* Thunderbird fails to set correct order on startup, see xulstore.json file */
+
+/* use -moz-box-ordinal-group property in Thunderbird 102 */
+/* use order                  property in Thunderbird 115 */
+
+/* use toolbaritem#menubar-items selector in Thunderbird 102 3pane window */
+/* use menubar#mail-menubar      selector in Thunderbird 115 3pane window */
+
+/* @-moz-document ignores style rules contained within curly brackets in Thunderbird 115 */
+/* succeeds in userChrome.css, fails in example.as.css */
+/* use :root pseudo class and windowtype attribute to workaround issue */
+
+*|*:root[windowtype="mail:3pane"] menubar#mail-menubar                                            { order: 1 !important; }
+*|*:root[windowtype="mail:3pane"] toolbarbutton#__unique_identifier_1_restart_button              { order: 2 !important; }
+*|*:root[windowtype="mail:3pane"] toolbarbutton#__unique_identifier_2_test_code_button            { order: 3 !important; }
+*|*:root[windowtype="mail:3pane"] toolbarbutton#__unique_identifier_3_attributes_inspector_button { order: 4 !important; }
+*|*:root[windowtype="mail:3pane"] toolbarbutton#__unique_identifier_4_get_command_button          { order: 5 !important; }
+*|*:root[windowtype="mail:3pane"] toolbarbutton#__unique_identifier_5_preference_tracker_button   { order: 6 !important; }
+*|*:root[windowtype="mail:3pane"] toolbarbutton#__unique_identifier_6_example_button              { order: 7 !important; }
+
+*|*:root[windowtype="mail:messageWindow"] toolbaritem#menubar-items                          { order: 1 !important; }
+*|*:root[windowtype="mail:messageWindow"] toolbarbutton#__unique_identifier_6_example_button { order: 7 !important; }
+*|*:root[windowtype="mail:messageWindow"] toolbar#toolbar-menubar toolbarspring              { order: 8 !important; }
+
+*|*:root[windowtype="msgcompose"] toolbaritem#menubar-items                              { order: 1 !important; }
+*|*:root[windowtype="msgcompose"] toolbarbutton#__unique_identifier_2_test_code_button   { order: 3 !important; }
+*|*:root[windowtype="msgcompose"] toolbarbutton#__unique_identifier_4_get_command_button { order: 5 !important; }
+*|*:root[windowtype="msgcompose"] toolbarbutton#__unique_identifier_6_example_button     { order: 7 !important; }
+*|*:root[windowtype="msgcompose"] toolbar#compose-toolbar-menubar2 toolbarspring         { order: 8 !important; }
+
+/*
+
+ // toolbar mode label="Icons and Text"    value="full"
+ // toolbar mode label="Icons"             value="icons"
+ // toolbar mode label="Text"              value="text"
+ // toolbar mode label="Icons beside Text" value="textbesideicon"
+
+  (function () {
+    var toolbar = document.getElementById("mail-toolbar-menubar2") ||
+                  document.getElementById("toolbar-menubar");         // menu bar
+    toolbar.setAttribute("mode", "icons");
+    Services.xulStore.persist(toolbar, "mode");
+  })();
+
+  (function () {
+    var url = "chrome://messenger/content/messenger.xul";   // Thunderbird 68
+    var url = "chrome://messenger/content/messenger.xhtml"; // Thunderbird 78
+    var id = "mail-toolbar-menubar2";                       // Thunderbird 91
+    var id = "toolbar-menubar";                             // Thunderbird 102
+    var toolbar = document.getElementById(id);
+    var arr = [];
+    arr.push("1: " + Services.xulStore.getValue(url, id, "currentset"));
+    arr.push("2: " + toolbar.getAttribute("currentset"));
+    arr.push("3: " + toolbar.currentSet);
+    alert(arr.join("\n\n"));
+  })();
+
+  (function () {
+    var arr = [];
+ // arr.push("menubar-items");                                        // Thunderbird 102 3pane window
+    arr.push("mail-menubar");                                         // Thunderbird 115 3pane window
+    arr.push("__unique_identifier_1_restart_button");
+    arr.push("__unique_identifier_2_test_code_button");
+    arr.push("__unique_identifier_3_attributes_inspector_button");
+    arr.push("__unique_identifier_4_get_command_button");
+    arr.push("__unique_identifier_5_preference_tracker_button");
+    arr.push("__unique_identifier_6_example_button");
+ // arr.push("spring");                                               // Thunderbird 102 3pane window
+    var toolbar = document.getElementById("mail-toolbar-menubar2") ||
+                  document.getElementById("toolbar-menubar");         // menu bar
+    toolbar.currentSet = arr.join(",");
+    toolbar.setAttribute("currentset", arr.join(","));
+    Services.xulStore.persist(toolbar, "currentset");
+  })();
+
+  (function () {
+    var toolbar = document.getElementById("compose-toolbar-menubar2"); // menu bar
+    toolbar.setAttribute("mode", "icons");
+    Services.xulStore.persist(toolbar, "mode");
+  })();
+
+  (function () {
+    var url = "chrome://messenger/content/messengercompose/messengercompose.xul";   // Thunderbird 68
+    var url = "chrome://messenger/content/messengercompose/messengercompose.xhtml"; // Thunderbird 78
+    var id = "compose-toolbar-menubar2";
+    var toolbar = document.getElementById(id);
+    var arr = [];
+    arr.push("1: " + Services.xulStore.getValue(url, id, "currentset"));
+    arr.push("2: " + toolbar.getAttribute("currentset"));
+    arr.push("3: " + toolbar.currentSet);
+    alert(arr.join("\n\n"));
+  })();
+
+  (function () {
+    var arr = [];
+    arr.push("menubar-items");
+    arr.push("__unique_identifier_2_test_code_button");
+    arr.push("__unique_identifier_4_get_command_button");
+    arr.push("__unique_identifier_6_example_button");
+    arr.push("spring");
+    var toolbar = document.getElementById("compose-toolbar-menubar2"); // menu bar
+    toolbar.currentSet = arr.join(",");
+    toolbar.setAttribute("currentset", arr.join(","));
+    Services.xulStore.persist(toolbar, "currentset");
+  })();
+
+*/
